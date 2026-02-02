@@ -1,7 +1,7 @@
 import React from 'react';
 
 export function Settings({ settings, onUpdate, nextAlert }) {
-  const intervals = [20, 30, 45, 60];
+  const intervals = [15, 30, 45, 60];
 
   const formatNextAlert = (timestamp) => {
     if (!timestamp) return 'off';
@@ -25,7 +25,7 @@ export function Settings({ settings, onUpdate, nextAlert }) {
           ))}
         </div>
       </div>
-      
+
       {nextAlert && (
         <div className="next-alert-info">
           🔔 Next alert at {formatNextAlert(nextAlert)}

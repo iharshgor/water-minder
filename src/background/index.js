@@ -47,7 +47,8 @@ chrome.alarms.onAlarm.addListener(async (alarm) => {
                 { title: 'Snooze 5m 💤' }
             ],
             requireInteraction: true,
-            priority: 2
+            priority: 2,
+            silent: false
         });
     }
 });

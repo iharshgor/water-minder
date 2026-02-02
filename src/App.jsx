@@ -30,6 +30,15 @@ function App() {
       <Controls onAdd={addWater} />
 
       <FactCard fact={fact} />
+
+      <div className="clean-footer" style={{ marginTop: '20px', fontSize: '0.65rem', opacity: 0.6, textAlign: 'center' }}>
+        <a href="https://www.flaticon.com/free-animated-icons/droplet" title="droplet animated icons" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+          Droplet animated icons created by Freepik - Flaticon
+        </a>
+        <div style={{ marginTop: '4px' }}>
+          Made by <a href="https://iharshgor.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', fontWeight: '600' }}>iharshgor</a>
+        </div>
+      </div>
     </div>
   );
 }
