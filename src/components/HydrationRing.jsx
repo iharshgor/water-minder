@@ -1,12 +1,14 @@
 import React from 'react';
 
 export function HydrationRing({ current, goal }) {
-    const percentage = Math.min((current / goal) * 100, 100);
+    const rawPercentage = Math.round((current / goal) * 100);
+    const visualPercentage = Math.min(rawPercentage, 100);
+
     const radius = 80;
     const stroke = 12;
     const normalizedRadius = radius - stroke * 2;
     const circumference = normalizedRadius * 2 * Math.PI;
-    const strokeDashoffset = circumference - (percentage / 100) * circumference;
+    const strokeDashoffset = circumference - (visualPercentage / 100) * circumference;
 
     return (
         <div className="hydration-ring-container">
@@ -16,7 +18,7 @@ export function HydrationRing({ current, goal }) {
                 className="hydration-ring"
             >
                 <circle
-                    stroke="rgba(255, 255, 255, 0.1)"
+                    className="ring-track"
                     strokeWidth={stroke}
                     fill="transparent"
                     r={normalizedRadius}
@@ -24,7 +26,7 @@ export function HydrationRing({ current, goal }) {
                     cy={radius}
                 />
                 <circle
-                    stroke="white"
+                    className="progress-circle"
                     fill="transparent"
                     strokeWidth={stroke}
                     strokeDasharray={circumference + ' ' + circumference}
@@ -33,12 +35,14 @@ export function HydrationRing({ current, goal }) {
                     r={normalizedRadius}
                     cx={radius}
                     cy={radius}
-                    className="progress-circle"
                 />
             </svg>
             <div className="ring-content">
-                <h2>{Math.round(percentage)}%</h2>
-                <p>{current} / {goal} ml</p>
+                <h2>{rawPercentage}%</h2>
+                <div className="ring-stats">
+                    <span className="current">{current} ml</span>
+                    <span className="goal">of {goal} ml</span>
+                </div>
             </div>
         </div>
     );
